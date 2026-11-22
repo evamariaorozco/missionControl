@@ -3,7 +3,9 @@ package br.com.infnet.missioncontrol.controller;
 import br.com.infnet.missioncontrol.model.ErrorResponse;
 import br.com.infnet.missioncontrol.model.Missao;
 import br.com.infnet.missioncontrol.model.StatusMissao;
+import br.com.infnet.missioncontrol.service.AutorizacaoLancamentoService;
 import br.com.infnet.missioncontrol.service.MissaoService;
+import br.com.infnet.missioncontrol.service.OpenMeteoClient;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +18,11 @@ import java.util.List;
 @RequestMapping("/missoes")
 public class MissaoController {
     private final MissaoService missaoService;
+    private final AutorizacaoLancamentoService autorizacaoLancamentoService;
 
-    public MissaoController(MissaoService missaoService) {
+    public MissaoController(MissaoService missaoService, AutorizacaoLancamentoService autorizacaoLancamentoService) {
         this.missaoService = missaoService;
+        this.autorizacaoLancamentoService = autorizacaoLancamentoService;
     }
     @GetMapping("/{id}")
     public ResponseEntity buscarPeloId(@PathVariable Long id) {
@@ -75,6 +79,11 @@ public class MissaoController {
         existente.setStatus(entrada.getStatus());
         existente.setTripulantes(entrada.getTripulantes());
         return ResponseEntity.ok().body(existente);
+
+    }
+    @GetMapping("/autorizar")
+    public void autorizar() {
+
 
     }
 }

@@ -193,7 +193,6 @@ public class CoordenacaoMissoesServiceTest {
                                             int anoSegunda,
                                             StatusMissao statusSegunda,
                                             boolean esperado){
-
         Missao primeira = criarMissao(
                 destinoPrimeira,
                 anoPrimeira,

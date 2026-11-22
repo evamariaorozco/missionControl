@@ -11,10 +11,8 @@ import java.util.List;
 @Service
 public class MissaoService {
     private final ArrayList<Missao> missoes = new ArrayList<>() ;
-    private final TesteService testeService;
     private Long proximoId = 4L;
     public MissaoService(TesteService testeService) {
-        this.testeService = testeService;
         missoes.add(new Missao(1L, "Aurora Lunar", "Lua", 2028,
                 StatusMissao.PLANEJADA, new ArrayList<>(List.of("Lia", "Mateus")),"teste@teste.com"));
 
